@@ -1,0 +1,121 @@
+﻿
+<script>
+    $(".button-tab").click(function () {
+        if ($(this).hasClass("open1")) {
+
+            $(this).children(".pull-right:first-child").show();
+            $(this).children(".pull-right:last-child").hide();
+            $(this).addClass("close1")
+            $(this).removeClass("open1")
+        }
+        else {
+            $(this).addClass("open1")
+            $(this).removeClass("close1")
+            $(this).children(".pull-right:first-child").hide();
+            $(this).children(".pull-right:last-child").show();
+        }
+    })
+
+</script>
+
+
+<form class="form-inline">
+    <div class="top40">
+        <p class="bottom20"><a class="btn btn-default bg3" href="#StylistHome"  role="button">Tillbaka</a></p>
+        <div class="row">
+            <div class="col-sm-9">
+                <label class="control-label pageHead">Tjänster </label>
+            </div>
+            <!--<div class="col-sm-3"><a class="btn btn-primary btn-block  bottom10 btn-lg bg1 pull-right  btn-sm-block" href="#" role="button" style="width:250px;">Lägg till kategori</a> </div>-->
+        </div>
+
+        <!--<a class="btn btn-default bg2 pull-right" href="#" role="button">Lägg till stylist</a>-->
+    </div>
+</form>
+<hr>
+<style>
+    .services-form table > tbody > tr > td:nth-child(1) input[type="text"] {
+        width: 100%;
+    }
+
+    .services-form table > tbody > tr > td:nth-child(2) input[type="text"] {
+        width: 70px;
+    }
+
+    /*.dropdownHeading a.accordion-toggle:before {
+    float: right;
+    position: relative;
+}*/
+</style>
+<form class="ServicesForm">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-xs-12 dddiv" ng-repeat="k in ServiceModel.Services" >
+                    <h2 class="dropdownHeading" id="h2_{{k.id}}" ng-click="toggleServices(k.id);"><a class="{{ShowAnchorIcon(k.id)}} accordion-toggle" role="button"> {{k.servicename}} </a> </h2>
+                    <div id="collapse_{{k.id}}" class="panel-collapse"  style="{{ShowDetailsOrNot(k.id)}}">
+                        <div class="whitebgDiv borderdiv paddinglesstopbottom">
+                            <div class="table-panel">
+                                <table class="table">
+                                    <tbody >
+                                        <tr ng-repeat="Service in k.service_type | orderBy:orderByField:reverseSort" ng-include="getTemplate(Service)"></tr>
+                                    </tbody>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="form-group input-group full-block" ng-class="{'has-error':ServiceForm.AddNameText.$invalid && ServiceForm.AddNameText.$touched}">
+                                                <input name="AddNameText" type="text" placeholder="type Name" class="form-control" id="txtName_{{k.id}}" required
+                                                       tooltip="Mandatory!"/><!--ng-model="ServiceModel.ServiceType"-->
+                                                <span class="input-group-addon ig-addon-custom" ng-class="{'has-error':ServiceForm.AddPriceText.$invalid && ServiceForm.AddPriceText.$touched}">
+                                                    <input name="AddPriceText" type="text" id="txtPrice_{{k.id}}" placeholder="Price" class="form-control fc-custom"  required 
+                                                           tooltip="Mandatory!"  /><!--ng-model="ServiceModel.Price"-->
+                                                </span>
+                                                <a href="javascript:;" ng-click="saveType(k.servicename,k.id)" class="icon-link-pos">
+                                                <span class="glyphicon glyphicon-plus icon-padding top10" ng-class="{disabled: IsButtonDisabled()}"></span></a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>              
+            </div>          
+        </div>
+    </div>
+    <!--.row-->
+    <script type="text/ng-template" id="display">
+        <!--<td>{{$parent.$index + 1}}</td>-->
+        <td>{{Service.typeName}}</td>
+        <td class="text-right">{{Service.price}}</td>
+        <td class="text-right">
+            <!--<a href="javascript:;" ng-click="editService(Service)"><img src="Content/img/icon-edit.png" alt=""></a>
+            <a href="javascript:;" ng-click="deleteService(Service)"><img src="Content/img/icon-delete.png" alt=""></a>-->
+            <a href="javascript:;" ng-click="editService(Service)" style="padding-right:5px"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="javascript:;" ng-click="deleteService(Service)"><span class="glyphicon glyphicon-remove"></span></a>
+        </td>
+    </script>
+    <script type="text/ng-template" id="edit">
+        <!--<td>{{$parent.$index + 1}}</td>-->
+        <td>
+            <div ng-class="{'has-error':ServiceForm.EditNameText.$invalid && ServiceForm.EditNameText.$touched}">
+                <input name="EditNameText" type="text" class="form-control  input-sm" placeholder="Stylist Name" ng-model="ServiceModel.selected.typeName" required
+                       tooltip="Mandatory!" />
+            </div>
+        </td>
+        <td>
+            <div ng-class="{'has-error':ServiceForm.EditPriceText.$invalid && ServiceForm.EditPriceText.$touched}">
+                <input name="EditPriceText" type="text" class="form-control  input-sm" placeholder="Price" ng-model="ServiceModel.selected.price" required
+                       tooltip="Mandatory!"  />
+            </div>
+        </td>
+        <td class="text-right">
+            <a href="javascript:;" ng-click="updateService($index)" style="padding-right:5px"><span class="glyphicon glyphicon-floppy-disk icon-padding"></span></a>
+            <a href="javascript:;" ng-click="reset()"><span class="glyphicon glyphicon-refresh icon-padding"></span></a>
+        </td>
+    </script>
+</form>
+
+
+
+

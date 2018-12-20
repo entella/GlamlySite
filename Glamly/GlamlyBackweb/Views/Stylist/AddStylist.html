@@ -1,0 +1,152 @@
+﻿
+
+<form name="" class="form-inline">
+    <div class="top40">
+        <label class="control-label pageHead"> Lägg till stylist </label>
+        <!--<a class="btn btn-default bg2 pull-right" href="#" role="button">Lägg till stylist</a>-->
+    </div>
+</form>
+<form name="UserPrivateForm" role="form">
+    <div class="row rowinner white-bg padding20 ">
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-12  paddingleftright0">
+                    <h4 class="subHead">Personuppgifter</h4>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label">Förnamn*</label>
+                                <div ng-class="{'has-error':UserPrivateForm.first_name.$invalid && UserPrivateForm.first_name.$touched}">
+                                    <input name="first_name" ng-model="UserData.first_name" type="text" class="form-control" required
+                                           uib-tooltip="Mandatory!" tooltip-enable="UserPrivateForm.first_name.$invalid && UserPrivateForm.first_name.$touched">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label">Efternamn</label>
+                                <div ng-class="{'has-error':UserPrivateForm.last_name.$invalid && UserPrivateForm.last_name.$touched}">
+                                    <input name="last_name" ng-model="UserData.last_name" type="text" class="form-control" required
+                                           uib-tooltip="Mandatory!" tooltip-enable="UserForm.last_name.$invalid && UserForm.last_name.$touched">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <br>
+                            <div class="form-group">
+                                <label class="control-label">Epostadress</label>
+                                <div ng-class="{'has-error':UserPrivateForm.user_email.$invalid && UserPrivateForm.user_email.$touched}">
+                                    <input name="user_email" ng-model="UserData.user_email" type="email" class="form-control" required placeholder="Epostadress"
+                                           uib-tooltip="Mandatory!" tooltip-enable="UserForm.user_email.$invalid && UserForm.user_email.$touched">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="control-label">Telefonnummer</label>
+                                <div ng-class="{'has-error':UserPrivateForm.Mobile.$invalid && UserPrivateForm.Mobile.$touched}">
+                                    <input name="Mobile" ng-model="UserData.Mobile" type="text" class="form-control" required placeholder="Telefonnummer"
+                                           uib-tooltip="Mandatory!" tooltip-enable="UserForm.Mobile.$invalid && UserForm.Mobile.$touched">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <br>
+                            <div class="form-group">
+                                <label class="control-label">Adress</label>
+                                <div ng-class="{'has-error':UserPrivateForm.address.$invalid && UserPrivateForm.address.$touched}">
+                                    <input name="address" ng-model="UserData.address" type="text" class="form-control" required placeholder="Address"
+                                           uib-tooltip="Mandatory!" tooltip-enable="UserForm.address.$invalid && UserForm.address.$touched">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label">Postort</label>
+                                <div ng-class="{'has-error':UserPrivateForm.city.$invalid && UserPrivateForm.city.$touched}">
+                                    <input name="city" ng-model="UserData.city" type="text" class="form-control" required placeholder="Postort"
+                                           uib-tooltip="Mandatory!" tooltip-enable="UserForm.city.$invalid && UserForm.city.$touched">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label">Postnummer</label>
+                                <div ng-class="{'has-error':UserPrivateForm.zipcode.$invalid && UserPrivateForm.zipcode.$touched}">
+                                    <input name="zipcode" ng-model="UserData.zipcode" type="text" class="form-control" required placeholder="zipcode"
+                                           uib-tooltip="Mandatory!" tooltip-enable="UserForm.zipcode.$invalid && UserForm.zipcode.$touched">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="control-label">kommentarer</label>
+                                <div ng-class="{'has-error':photoForm.comments.$invalid && photoForm.comments.$touched}">
+                                    <textarea style="height: 50px;" name="comments" ng-model="UserData.comments" type="text" class="form-control"
+                                              uib-tooltip="Mandatory!" tooltip-enable="photoForm.comments.$invalid && photoForm.comments.$touched"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">         
+            <div class="row">
+                <div class="col-sm-12  paddingleftright0 expertise-section">
+                    <h4 class="subHead">Kategorier</h4>
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="row">
+                                <div class="col-md-6" ng-repeat="h in ServicesList">
+                                    <div class="checkbox-custom">
+                                        <span class="squaredTwo">
+                                            <input ng-model="h.chkvalue" type="checkbox" value="h.id" id="{{h.id}}" />
+
+                                            <label for="{{h.id}}"></label>
+                                        </span>
+                                        <span>{{h.servicename}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 paddingleftright0">
+                    <h4 class="subHead">Glamly PRO</h4>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="control-label">Användarnamn</label>
+                                <div ng-class="{'has-error':UserPrivateForm.user_email.$invalid && UserPrivateForm.user_email.$touched}">
+                                    <input name="Email" ng-model="UserData.user_email" type="text" class="form-control" required placeholder="Förnanmn"
+                                           uib-tooltip="Mandatory!" tooltip-enable="UserForm.user_email.$invalid && UserForm.user_email.$touched">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">                      
+                            <div class="form-group">
+                                <label>Password:</label>
+                                <div class="input-append input-group">
+                                    <input type="password" id="password" ng-model="UserData.user_pass" name="password" class="form-control" data-toggle="password" style="display: block;">
+                                    <input type="text" class="form-control input-field" ng-model="UserData.user_pass" style="display: none;">
+                                    <span tabindex="100" title="Click here to show/hide password" class="add-on input-group-addon">
+                                        <i class="glyphicon icon-eye-open glyphicon-eye-open" ng-click="showpassword()" style="cursor:pointer;"></i><i class="glyphicon icon-eye-open glyphicon-eye-close" ng-click="hidepassword()" style="display:none; cursor:pointer;"></i>
+                                    </span>
+                                </div>
+                                <p><strong>Note:</strong> After write something on password field, press on eye icon</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 top10">
+                            <button type="button" ng-disabled="UserPrivateForm.$invalid" class="bg1 btn btn-lg btn-primary btn-block" ng-click="saveUpdateUser()">Spara</button>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+        </div>
+    </div>
+</form>
+

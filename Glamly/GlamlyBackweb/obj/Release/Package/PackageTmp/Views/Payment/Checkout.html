@@ -1,0 +1,13 @@
+﻿<div class="container">
+    <form id="dibsform" method="post" action="https://payment.architrade.com/paymentweb/start.action" accept-charset="ISO-8859-1">
+        <input type="hidden" name="{{key}}" value="{{value}}" ng-repeat="(key, value) in paymentData" />
+    </form>
+
+    <form class="form-signin">
+        <div class="row form-group">
+            <div class="col-md-12 level-align">
+                Processing...
+            </div>
+        </div>
+    </form>
+</div>

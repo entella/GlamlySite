@@ -1,0 +1,186 @@
+﻿<script>
+    $(".button-tab").click(function () {
+        if ($(this).hasClass("open1")) {
+
+            $(this).children(".pull-right:first-child").show();
+            $(this).children(".pull-right:last-child").hide();
+            $(this).addClass("close1")
+            $(this).removeClass("open1")
+        }
+        else {
+            $(this).addClass("open1")
+            $(this).removeClass("close1")
+            $(this).children(".pull-right:first-child").hide();
+            $(this).children(".pull-right:last-child").show();
+        }
+    })
+
+</script>
+
+<form class="form-inline">
+    <div class="top40">
+        <!--<p class="bottom20"><a class="btn btn-default bg3" href="#StylistHome" role="button">Tillbaka</a></p>-->
+        <div class="row">
+            <div class="col-sm-9">
+                <label class="control-label pageHead">Stylist Page </label>
+            </div>
+            <div class="col-sm-3"><a class="btn btn-primary btn-block  bottom10 btn-lg bg1 pull-right  btn-sm-block" ng-click="openPopup('add');" role="button" style="width:250px;">Lägg till stylist</a> </div>
+        </div>
+
+        <!--<a class="btn btn-default bg2 pull-right" href="#" role="button">Lägg till stylist</a>-->
+    </div>
+</form>
+<hr>
+
+<form class="StylistPageForm">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 dddiv" ng-repeat="s in StylistDataList">
+                    <div class="dropdownHeading stylistdiv-head">
+                        <h2>{{s.name}}</h2>
+                        <div class="stylistdiv-icon">
+                            <a class="stylistdiv-edit" href="" ng-click="GetStylistPagebyId(s);"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="{{ShowAnchorIcon(s.id)}}  accordion-toggle" id="h2_{{s.id}}" ng-click="toggleServices(s.id);" role="button"></a>
+                        </div>
+                    </div>
+                    <div class="panel-collapse" id="collapse_{{s.id}}" style="{{ShowDetailsOrNot(s.id)}}">
+                        <div class="whitebgDiv stylistdiv-content">
+                            <div class="table-panel">
+                                <div class="row">
+                                    <div class="col-xs-4 stylistimg">                                   
+                                        <img class="img-responsive" ngf-src="!photo.$error && s.profileimageguid">
+                                    </div>
+                                    <div class="col-xs-8 stylistlist">
+                                        <h3>{{s.name}}</h3>
+                                        <ul>
+                                            <li ng-if="s.skill1"><span>{{s.skill1}}</span></li>
+                                            <li ng-if="s.skill2"><span>{{s.skill2}}</span></li>
+                                            <li ng-if="s.skill3"><span>{{s.skill3}}</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--.whitebgDiv-->
+                    </div>
+                    <!--.collapse-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--.row-->
+</form>
+<!-- Modal -->
+<div class="modal fade" id="stylistedit_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog stylist-popup" role="document">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form class="profileimg-form" name="photoForm" method="post" ng-submit="uploadPictures('add')" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Lägg till stylist</h4>
+                </div>
+                <div class="modal-body stylist-editF">
+
+                    <div class="stylistup-section">
+                        <div class="stylistup-img">
+                            <img ng-if="photo" ng-show="photoForm.file.$valid" id="profileimage" ngf-src="!photo.$error && photo" class="">
+                            <img ng-if="!photo" ng-show="photoForm.file.$valid" id="profileimage" class="">
+                            <i ng-if="!photo" class="fa fa-camera" aria-hidden="true"></i>
+                        </div>
+                        <div class="stylistup-content">
+                            <div class="stylistup-upbtn"><div name="photo" class="btnupload" ng-model="photo" ngf-select ngf-accept="'image/*'" ngf-max-size="5MB" ngf-pattern="'image/*'">Upload File</div></div>
+                            <div class="stylistup-upbtn" ng-click="removeimg();" id="removeimage">Remove image</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Namn*</label>
+                        <div ng-class="{'has-error':photoForm.name.$invalid && photoForm.name.$touched}">
+                            <input id="name" name="name" ng-model="StylistData.name" type="text" class="form-control" required
+                                   uib-tooltip="Mandatory!" tooltip-enable="photoForm.name.$invalid && photoForm.name.$touched">
+                        </div>
+                    </div>
+                    <div class="form-group editF-part2">
+                        <label for="Foretag">Beskrivning</label>
+                        <div ng-class="{'has-error':photoForm.skillone.$invalid && photoForm.skillone.$touched}">
+                            <input name="skillone" ng-model="StylistData.skillone" type="text" id="skill1" class="form-control" required placeholder="Skill First"
+                                   uib-tooltip="Mandatory!" tooltip-enable="photoForm.skillone.$invalid && photoForm.skillone.$touched">
+                        </div>
+                        <div ng-class="{'has-error':photoForm.skillsecond.$invalid && photoForm.skillsecond.$touched}">
+                            <input name="skillsecond" ng-model="StylistData.skillsecond" type="text" class="form-control" placeholder="Skill Second"
+                                   id="skill2">
+                        </div>
+                        <div ng-class="{'has-error':photoForm.skillthird.$invalid && photoForm.skillthird.$touched}">
+                            <input name="skillthird" ng-model="StylistData.skillthird" type="text" class="form-control" placeholder="Skill Third"
+                                   id="skill3">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-stylistedit1" data-dismiss="modal">Ta bort</button>
+                    <button type="submit" class="btn btn-primary" ng-disabled="photo==null">Skapa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="Editstylistedit_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog stylist-popup" role="document">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form class="profileimg-form" name="photoForm" method="post" ng-submit="uploadPictures('edit')" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Lägg till stylist</h4>
+                </div>
+                <div class="modal-body stylist-editF">
+
+                    <div class="stylistup-section">
+                        <div class="stylistup-img">
+                            <img ng-if="photo" ng-show="photoForm.file.$valid" id="profileimage" ngf-src="!photo.$error && photo" class="">
+                            <img ng-if="!photo" ng-show="photoForm.file.$valid" id="profileimage" class="">
+                            <i ng-if="!photo" class="fa fa-camera" aria-hidden="true"></i>
+                        </div>
+                        <div class="stylistup-content">
+                            <div class="stylistup-upbtn"><div name="photo" class="btnupload" ng-model="photo" ngf-select ngf-accept="'image/*'" ngf-max-size="20MB" ngf-pattern="'image/*'">Upload File</div></div>
+                            <div class="stylistup-upbtn" ng-click="removeimg();">Remove image</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Namn*</label>
+                        <div ng-class="{'has-error':photoForm.name.$invalid && photoForm.name.$touched}">
+                            <input id="name" name="name" ng-model="StylistData.name" type="text" class="form-control" required
+                                   uib-tooltip="Mandatory!" tooltip-enable="photoForm.name.$invalid && photoForm.name.$touched">
+                        </div>
+                    </div>
+                    <div class="form-group editF-part2">
+                        <label for="Foretag">Beskrivning</label>
+                        <div ng-class="{'has-error':photoForm.skillone.$invalid && photoForm.skillone.$touched}">
+                            <input name="skillone" ng-model="StylistData.skillone" type="text" id="skill1" class="form-control" required placeholder="Skill First"
+                                   uib-tooltip="Mandatory!" tooltip-enable="photoForm.skillone.$invalid && photoForm.skillone.$touched">
+                        </div>
+                        <div ng-class="{'has-error':photoForm.skillsecond.$invalid && photoForm.skillsecond.$touched}">
+                            <input name="skillsecond" ng-model="StylistData.skillsecond" type="text" class="form-control" placeholder="Skill Second"
+                                   id="skill2">
+                        </div>
+                        <div ng-class="{'has-error':photoForm.skillthird.$invalid && photoForm.skillthird.$touched}">
+                            <input name="skillthird" ng-model="StylistData.skillthird" type="text" class="form-control" placeholder="Skill Third"
+                                   id="skill3">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-stylistedit1" ng-click="removeStylitPage(StylistData);">Ta bort</button>
+                    <!--<button type="button" class="btn btn-stylistedit1" data-dismiss="modal">Ta bort</button>-->
+                    <button type="submit" class="btn btn-primary" ng-disabled="photo==null">Spara</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

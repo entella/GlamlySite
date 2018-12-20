@@ -1,0 +1,56 @@
+﻿<!--<div class="custom-popup-design custom-alert-popup success-popup" id="successpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-custom-width" role="document">
+        <div class="modal-content">
+            <div class="modal-header background-drkgreen text-white">
+                <button ng-click="dismissModal()" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-check-circle" aria-hidden="true"></i> {{'COMMON.DIALOG_CONFIRM_TITLE'|translate}}</h4>
+            </div>
+            <div class="modal-body">
+                <p class="popup-term-text">{{msg}}</p>
+            </div>
+            <div class="modal-footer">
+                <div class="terms-btn">
+                    <button ng-click="yes()" class="btn btn-small-green">{{'COMMON.DIALOG_OK'|translate}}</button>
+                </div>
+                <div class="terms-btn">
+                    <button ng-click="dismissModal()" class="btn custom-btn-default">{{'COMMON.DIALOG_CANCEL'|translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="modal-header Spopup-header">
+    <button ng-click="dismissModal()" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-check-circle" aria-hidden="true"></i> {{'COMMON.DIALOG_CONFIRM_TITLE'|translate}}</h4>
+</div>
+<div class="modal-body">
+    <p class="popup-term-text">{{msg}}</p>
+</div>
+<div class="modal-footer policy-popup-footer">
+    <div class="terms-btn">
+        <button ng-click="dismissModal()" class="btn custom-btn-default">{{'COMMON.DIALOG_CANCEL'|translate}}</button>
+        <button ng-click="yes()" class="btn btn-small-green">{{'COMMON.DIALOG_OK'|translate}}</button>        
+    </div>
+</div>
+
+<style>
+
+    .Spopup-header {
+    background: #CE0058;
+    border-radius: 7px 7px 0 0;
+    margin: 0;
+    color: #fff;
+    padding: 12px 15px;
+    text-align: center;
+}
+    btn-small-green {
+    background-color: #CE0058;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+    padding: 7px 10px;
+}
+</style>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9badc9fda1e9479d93ce0afd90d36cb4" Name="Diagram1" ZoomLevel="89">
+        <EntityTypeShape EntityType="GlamlyModel.wp_commentmeta" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_comments" Width="1.5" PointX="3.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_duplicator_packages" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_services" Width="2.75" PointX="0.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_links" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_mondula_form_wizards" Width="1.5" PointX="0.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_options" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_postmeta" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_posts" Width="1.5" PointX="2.375" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_term_relationships" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_term_taxonomy" Width="1.5" PointX="4.125" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_termmeta" Width="1.5" PointX="4.125" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_terms" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_usermeta" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_users" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_cf7_data" Width="1.5" PointX="6.125" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_cf7_data_entry" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_servicestypes" Width="1.5" PointX="13.375" PointY="7.75" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_userresetpassword" Width="1.5" PointX="8" PointY="8.75" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_payment" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_Calendar" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_servicesbookings" Width="1.5" PointX="12.375" PointY="10.75" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_stylistTemp" Width="1.5" PointX="8.375" PointY="11.75" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_faq" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_stylistschedules" Width="1.5" PointX="4.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

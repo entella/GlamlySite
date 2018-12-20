@@ -1,0 +1,26 @@
+﻿{
+  "en-US": {
+    "ADD_USER_MAIL_SUBJECT": "Added to Flexmission",
+    "ADD_USER_MAIL_SALUTATION": "Hello and welcome to Flexmission!",
+    "ADD_USER_MAIL_BODY_TEXT1": "Click on the link to complete your registration with us. On the page you come to, you can choose a password. Then just click on \"Register\" and then you can start using the system immediately.",
+    "ADD_USER_LINK_TEXT": "Add Me",
+    "ADD_USER_MAIL_CLOSING": "Best regards from Flexmission",
+    "RESET_PASSWORD_MAIL_SUBJECT": "Flexmission",
+    "RESET_PASSWORD_MAIL_SALUTATION": "Hey!",
+    "RESET_PASSWORD_MAIL_BODY_TEXT1": "Click the link below to reset your password at Flexmission.",
+    "RESET_PASSWORD_LINK_TEXT": "Reset Password",
+    "RESET_PASSWORD_MAIL_CLOSING": "Best regards from Flexmission"
+  },
+  "sv-SE": {
+    "ADD_ADMIN_USER_SUBJECT": "Added to Flexmission",
+    "ADD_USER_MAIL_SALUTATION": "Hej och välkommen till Flexmission!",
+    "ADD_USER_MAIL_BODY_TEXT1": "Klicka på länken för att slutföra din registrering hos oss. På sidan du kommer till får du välja ett lösenord. Därefter är det bara att klicka på \"Registrera\" och sen kan du direkt börja använda systemet.",
+    "ADD_USER_LINK_TEXT": "Add Me",
+    "ADD_USER_MAIL_CLOSING": "Vänliga hälsningar från Flexmission",
+    "RESET_PASSWORD_MAIL_SUBJECT": "Flexmission",
+    "RESET_PASSWORD_MAIL_SALUTATION": "Hej!",
+    "RESET_PASSWORD_MAIL_BODY_TEXT1": "Klicka på länken nedan för att återställa ditt lösenord hos Flexmission.",
+    "RESET_PASSWORD_LINK_TEXT": "Återställ lösenord",
+    "RESET_PASSWORD_MAIL_CLOSING": "Vänliga hälsningar från Flexmission"
+  }
+}

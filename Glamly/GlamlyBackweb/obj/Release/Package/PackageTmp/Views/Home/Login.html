@@ -1,0 +1,13 @@
+﻿<div class="container">
+    <form class="form-signin">
+        <div ng-class="{'has-error':loginForm.Username.$invalid && loginForm.Username.$touched}">
+            <input name="Username" type="email" class="form-control custom-input" placeholder="Användarnamn" data-ng-model="loginData.userName" required
+                   tooltip="Mandatory!" tooltip-enable="loginForm.Username.$invalid && loginForm.Username.$touched">
+        </div>
+        <div ng-class="{'has-error':loginForm.Password.$invalid && loginForm.Password.$touched}">
+            <input id="inputPassword" name="Password" type="password" class="form-control custom-input" placeholder="Lösenord" data-ng-model="loginData.password" required
+                   tooltip="Mandatory!" tooltip-enable="loginForm.Password.$invalid && loginForm.Password.$touched">
+        </div>
+        <button class="bg1 btn btn-primary btn-block btn-lg" type="submit" data-ng-click="login()">Logga in</button>
+    </form>
+</div>

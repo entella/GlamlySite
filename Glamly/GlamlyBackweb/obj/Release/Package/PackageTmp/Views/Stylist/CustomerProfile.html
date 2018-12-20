@@ -1,0 +1,64 @@
+﻿
+<form class="form-inline" role="form">
+    <div class="top40">
+        <p class="bottom20"><a class="btn btn-default bg3" href="#Customer" ng-click="goBack()" role="button">Tillbaka</a></p>
+        <div class="row">
+            <div class="col-sm-7">
+                <label class="control-label pageHead">kunderdetalj - {{UserData.first_name +  " " + UserData.last_name}} </label>
+            </div>
+            <!--<div class="col-sm-5">
+                <a class="btn btn-primary  bottom10 btn-lg bg1 pull-right btn-sm-block" href="javascript:;" ng-click="EditAction()" role="button" style="width:180px;margin-left:5px;">{{btnText}}</a>
+                <span class="separator-right pull-right hidden-sm hidden-md"></span>
+                <a class="btn btn-primary btn-lg bg2  bottom10 pull-right btn-sm-block" href="" ng-click="deleteStylist(UserData)" role="button" style="width:180px; ">Ta bort konto</a>
+            </div>-->
+        </div>
+    </div>
+</form>
+<hr>
+<form name="" role="form">
+    <div class="row rowinner white-bg padding20" ng-hide="editmode">
+        <div class="col-sm-12 paddingleftright0">
+            <div class="row profile-form">
+                <div class="col-sm-4">
+                    <h4 class="subHead">Personuppgifter</h4>                  
+                    <!--<div class="form-group">
+                        <label for="">SkapelseDatum</label>
+                        <p  class="lead">{{UserData.datetime}}</p>                     
+                    </div>-->
+                    <div class="form-group">
+                        <label for="">Namn</label>
+                        <p  class="lead">{{UserData.firstname}}</p>                      
+                    </div>
+                    <div class="form-group">
+                        <label for="">Epost</label>
+                        <p  class="lead">{{UserData.email}}</p>                     
+                    </div>
+                    <div class="form-group">
+                        <label for="">Telefonnummer</label>
+                        <p  class="lead">{{UserData.phone}}</p>                   
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h4 class="subHead">Kommentar</h4>
+                    <div class="form-group">
+                        <label for="">Adress</label>
+                        <p  class="lead">{{UserData.address}}</p>                    
+                    </div>
+                    <div class="form-group">
+                        <label for="">Postnummer</label>
+                        <p  class="lead">{{UserData.zipcode}}</p>                       
+                    </div>
+                    <div class="form-group">
+                        <label for="">Postort</label>
+                        <p  class="lead">{{UserData.city}}</p>                     
+                    </div>
+                    <div class="form-group">
+                        <label for="">Comments</label>
+                        <p class="lead">{{UserData.comments}}</p>                      
+                    </div>
+                </div>              
+            </div>
+        </div>
+    </div>    
+</form>
+

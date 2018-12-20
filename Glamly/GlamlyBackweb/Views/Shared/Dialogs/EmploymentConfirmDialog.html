@@ -1,0 +1,48 @@
+﻿<!--<div class="custom-popup-design" id="smallpopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header background-drkgreen text-center text-white">
+                <button ng-click="dismissModal()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Avtal om allmän visstidsanställning</h4>
+            </div>
+            <div class="modal-body policy-popup">
+                <p class="popup-term-text">You must approve Personal Employment Company's fixed-term employment agreement, to start the assignment</p>
+                <div class="form-group" >
+                    <input id="register_terms" ng-model="registerTermValue" class="styled-checkbox" name="register_terms" type="checkbox">
+                    <label class="checkbox-label" for="register_terms"></label>
+                    <a href="" ng-click="TermsAndConditionLinkClick()" class="view-conditions">Terms and Conditions</a>
+                </div>
+                
+            </div>
+            <div class="modal-footer policy-popup-footer">
+                <div class="terms-btn">
+                    <button ng-click="dismissModal()" class="btn custom-btn-default">Cancel</button>
+                </div>
+                <div class="terms-btn">
+                    <button ng-click="Accept()" ng-disabled="!registerTermValue" class="btn btn-small-green">Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<div class="modal-header Spopup-header">
+    <button ng-click="dismissModal()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Avtal om allmän visstidsanställning</h4>
+</div>
+<div class="modal-body policy-popup">
+    <p class="popup-term-text">You must approve Personal Employment Company's fixed-term employment agreement, to start the assignment</p>
+    <div class="popup-checkbox">
+        <input id="register_terms" ng-model="registerTermValue" class="styled-checkbox" name="register_terms" type="checkbox">
+        <label class="checkbox-label" for="register_terms"></label>
+        <a href="" ng-click="TermsAndConditionLinkClick()" class="view-conditions">Terms and Conditions</a>
+    </div>
+
+    <!--<a name="termsAndConditionLink" href="" ng-click="TermsAndConditionLinkClick()">Terms and Conditions</a>-->
+</div>
+<div class="modal-footer policy-popup-footer">
+    <div class="terms-btn">
+        <button ng-click="dismissModal()" class="btn custom-btn-default">Cancel</button>
+        <button ng-click="Accept()" ng-disabled="!registerTermValue" class="btn btn-small-green">Accept</button>
+    </div>
+</div>
+

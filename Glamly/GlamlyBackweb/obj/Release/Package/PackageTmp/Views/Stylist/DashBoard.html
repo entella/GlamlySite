@@ -1,0 +1,72 @@
+﻿
+<form class="form-inline" role="form">
+    <div class="top40">
+        <label class="control-label pageHead"> Stylister </label>
+        <a class="btn btn-primary btn-lg bg2 bottom10 pull-right btn-sm-block " href="#AddStylist" role="button">Lägg till stylist</a>
+    </div>
+</form>
+<form class="form-horizontal" role="form">
+    <div class="row rowinner">
+        <div class="table-responsive">
+            <table class="table table-striped table-custom">
+                <!--<colgroup>
+                    <col class="col-xs-1">
+                    <col class="col-xs-7">
+                </colgroup>-->
+                <thead>
+                    <tr>
+                        <th>Skapades</th>
+                        <th>
+                            <a href="javascript:;" ng-click="orderByField='Stylist'; reverseSort = !reverseSort">
+                                Stylist <span ng-show="orderByField == 'Stylist'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort" ></span></span>
+                            </a>
+                        </th>
+                        <th>Telefonnummer</th>
+                        <th>Epostadress</th>
+                        <th>Tjänster</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="stylist in StylistList | orderBy:orderByField:reverseSort" >
+                        <!--<td>{{$index+1}}</td>-->
+                        <td ng-bind="stylist.mysqldate"></td>
+                        <!--<td ng-bind="(stylist.first_name) + (stylist.last_name)"></td>-->
+                        <td>{{stylist.first_name +  " " + stylist.last_name}}</td>
+                        <td ng-bind="stylist.mobile"></td>
+                        <td ng-bind="stylist.user_email"></td>
+                        <td ng-bind="stylist.services"></td>
+                        <!--<td>{{report.StatusText | translate}}</td>-->
+                        <td>
+                        <button type="button" ng-click="NavigateToStylistDetail(stylist)"  class="btn btwidth bg1 right12"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            <!--<a class="btn btwidth bg1 right12 " ng-click="NavigateToPersonDetail(person)"  href="#Profile" role="button"><span class="glyphicon glyphicon-eye-open"></span></a>-->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</form>
+<!--<div class="row">
+    <div class="col-sm-12">
+        <div class="record-control-footer">
+            <div class="record-section select-record">
+                <div class="dropdown-record">
+                    <span class="record-text">Visa:</span>
+                    <select class="record-limit" ng-model="RecordsPerPage" ng-change="RecordsPerPageChangeEvent()"
+                            ng-options="records for records in RecordsPerPageOptions"></select>
+                </div>
+            </div>
+            <div class="record-section record-pagination">
+                <dir-pagination-controls max-size="5"
+                                         direction-links="true"
+                                         boundary-links="true"
+                                         on-page-change="GetUsersByUserType(newPageNumber)">
+
+                </dir-pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>-->

@@ -1,0 +1,64 @@
+﻿/*Here I will write css for show horizantal nav menu*/
+
+.navbar{min-height:40px !important;}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #000;
+}
+
+.navbar ul li {
+  display: block;
+  position: relative;
+  float: left;
+  background: #000;
+}
+.navbar li ul { display: none; }
+
+.navbar ul li a {
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #fff;
+}
+
+
+.multiselect-parent ul li{background:#fff !important; display:block; margin:0 !important; padding:0 !important; float:none;}
+.multiselect-parent ul li a{padding-top:0px !important; padding-bottom:0px !important; }
+.multiselect-parent ul li a:hover{background:#fff !important;}
+.multiselect-parent li.divider{background:#e5e5e5 !important;}
+
+
+.navbar ul li a:hover { background: #2c3e50; }
+.navbar  li:hover > ul {
+  display: block;
+  position: absolute;
+  z-index:1001;
+}
+
+.navbar li:hover li { float: none; }
+
+.navbar li:hover a { background: #2c3e50; color:#fff;}
+
+
+.navbar li:hover, .navbar li a:hover { background: #2c3e50;}
+
+.main-navigation li ul li { border-top: 0; }
+ul ul ul {
+  left: 100%;
+  top: 0;
+}
+ul:before,
+ul:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+ul:after { clear: both; }
+
+/*YOU Can download this css from the below link (see youtube description)
+    */
+

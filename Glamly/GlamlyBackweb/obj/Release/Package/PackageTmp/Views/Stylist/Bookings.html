@@ -1,0 +1,282 @@
+﻿
+<form class="form-inline">
+    <div class="top40">
+        <label class="control-label pageHead">Bokingar </label>
+        <!--<a class="btn btn-default bg2 pull-right" href="#" role="button">Lägg till stylist</a>-->
+    </div>
+</form>
+<form>
+    <div class="row rowinner white-bg ">
+        <div class="col-sm-12 paddingleftright0 top20">
+            <!-- Panel groups -->
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title subHead"> <a class="accordion-toggle " data-toggle="collapse" ng-click="closediv(closemode)" data-parent="accordion" href="collapseOne"> Inkomna bokningar </a> </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" ng-show="closemode">
+                        <div class="panel-body">                       
+                            <div class="table-responsive table-holder">
+                                <!--<table class="table-default" ng-repeat="booking in BookingList" ng-if="booking.status=='false'">-->
+                                <table class="table-default" ng-repeat="booking in ServiceModel.DraftBookingList" >
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="custom-shadow fix-table-cols">
+                                                    <table class="table table-default">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Kund</th>
+                                                                <th>Datum</th>
+                                                                <th>Tjänst</th>
+                                                                <th>Typ av tjänst </th>
+                                                                <th></th>
+                                                                <!--<th></th>-->
+                                                            </tr>
+                                                            <tr ng-repeat="servicetype in booking.servicewithtypes">
+                                                                <td ng-bind="booking.firstname" title="{{booking.firstname}}" ng-click="showtext()"></td>
+                                                                <td ng-bind="booking.datetime" title="{{booking.datetime}}"></td>
+                                                                <td ng-bind="servicetype.servicename" title="{{servicetype.servicename}}"></td>
+                                                                <td ng-bind="servicetype.typename" title="{{servicetype.typename}}"></td>
+
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <select ng-options="t.stylistID as t.stylistName for t in booking.stylists" ng-model="servicetype.stylistID" class="form-control">
+                                                                            <option value="">Välj Stylist</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button type="button" ng-click="ApproveBooking(booking)" class="btn bg1 btn-block right12">Godkänn</button>
+                                                                </td>
+                                                                <td class="small-td">
+                                                                    <i class="fa fa-ban fa-2 text-primary" ng-show="IsRejected(booking.workflowstatus,booking.stylistid)" aria-hidden="true"></i>
+                                                                    <!--Status:Rejected by {{ServiceModel.rejectedbystylist}} and rejected date {{booking.rejecteddate}}-->
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Address</th>
+                                                                <th>Phone</th>
+                                                                <th colspan="3">Comments</th>
+
+                                                                <!--<th></th>-->
+                                                            </tr>
+                                                            <tr ng-repeat="servicetype in booking.servicewithtypes">
+                                                                <td ng-bind="booking.address" title="{{booking.address}}" ng-click="showtext()"></td>
+                                                                <td ng-bind="booking.phone" title="{{booking.phone}}"></td>
+                                                                <td colspan="3" ng-bind="booking.comments" title="{{booking.comments}}"></td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                            <td width="1%">
+                                                <div class="icon-remove">
+                                                    <button type="button" class="btn btn-default btn-flat btn-sm" ng-click="deleteBooking(booking)"><i class="fa fa-close" aria-hidden="true" style="margin-right:0;"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title subHead"> <a class="accordion-toggle collapsed" data-toggle="collapse" ng-click="closediv2(closemode2)" data-parent="accordion" href="collapseTwo"> Skickade till Stylist (Väntar på svar) </a> </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse in" ng-show="closemode2">
+                        <div class="panel-body">
+                            <div class="table-responsive table-holder">
+                                <!--ng-if="booking.status=='ApprovedByAdmin'"-->
+                                <table class="table-default" ng-repeat="booking in ServiceModel.PendingBookingList" ng-if="booking.isdeleted=='false'">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="custom-shadow fix-table-cols">
+                                                    <table class="table table-default">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Kund</th>
+                                                                <th>Datum</th>
+                                                                <th>Tjänst</th>
+                                                                <th>Typ av tjänst </th>
+                                                            </tr>
+                                                            <tr ng-repeat="servicetype in booking.servicewithtypes">
+                                                                <td ng-bind="booking.firstname"></td>
+                                                                <td ng-bind="booking.datetime"></td>
+                                                                <td ng-bind="servicetype.servicename"></td>
+                                                                <td ng-bind="servicetype.typename"></td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <select ng-options="t.stylistID as t.stylistName for t in booking.stylists" ng-model="booking.stylistid" class="form-control">
+                                                                            <option value="">Select option</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button type="button" class="btn bg1 btn-block right12">Ändra stylist</button>
+                                                                </td>
+                                                                <td class="small-td"><i class="fa fa-clock-o fa-2 text-primary" aria-hidden="true"></i></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Address</th>
+                                                                <th>Phone</th>
+                                                                <th colspan="3">Comments</th>
+                                                                <!--<th></th>-->
+                                                            </tr>
+                                                            <tr ng-repeat="servicetype in booking.servicewithtypes">
+                                                                <td ng-bind="booking.address" title="{{booking.address}}" ng-click="showtext()"></td>
+                                                                <td ng-bind="booking.phone" title="{{booking.phone}}"></td>
+                                                                <td colspan="3" ng-bind="booking.comments" title="{{booking.comments}}"></td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                            <td width="1%">
+                                                <div class="icon-remove">
+                                                    <button type="button" class="btn btn-default btn-flat btn-sm" ng-click="deleteBooking(booking)"> <i class="fa fa-close" aria-hidden="true" style="margin-right:0;"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title subHead"> <a class="accordion-toggle collapsed" data-toggle="collapse" ng-click="closediv1(closemode1)" data-parent="accordion" href="collapseTwo"> Pågående bokningar </a> </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse in" ng-show="closemode1">
+                        <div class="panel-body">
+                            <div class="table-responsive table-holder">
+                                <!--ng-if="booking.status=='ApprovedByAdmin'"-->
+                               
+                                <table class="table-default" ng-repeat="booking in ServiceModel.OngoingBookingList" ng-if="booking.isdeleted=='false'">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="custom-shadow fix-table-cols">
+                                                    <table class="table table-default">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Kund</th>
+                                                                <th>Datum</th>
+                                                                <th>Tjänst</th>
+                                                                <th>Typ av tjänst </th>                                                            
+                                                            </tr>
+                                                            <tr ng-repeat="servicetype in booking.servicewithtypes">
+                                                                <td ng-bind="booking.firstname"></td>
+                                                                <td ng-bind="booking.datetime"></td>
+                                                                <td ng-bind="servicetype.servicename"></td>
+                                                                <td ng-bind="servicetype.typename"></td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <select ng-options="t.stylistID as t.stylistName for t in booking.stylists" ng-model="booking.stylistid" class="form-control">
+                                                                            <option value="">Select option</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button type="button" class="btn bg1 btn-block right12">Ändra stylist</button>
+                                                                </td>
+                                                                <td class="small-td">&nbsp;</td>
+                                                                <!--<td class="small-td"><i class="fa fa-clock-o fa-2 text-primary" ng-show="IsRejected(booking.workflowstatus,booking.stylistid)" aria-hidden="true"></i>
+                                                                Status:Rejected by {{ServiceModel.rejectedbystylist}} and rejected date {{booking.rejecteddate}}
+                                                                </td>-->
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Address</th>
+                                                                <th>Phone</th>
+                                                                <th colspan="3">Comments</th>
+                                                                <!--<th></th>-->
+                                                            </tr>
+                                                            <tr ng-repeat="servicetype in booking.servicewithtypes">
+                                                                <td ng-bind="booking.address" title="{{booking.address}}" ng-click="showtext()"></td>
+                                                                <td ng-bind="booking.phone" title="{{booking.phone}}"></td>
+                                                                <td colspan="3" ng-bind="booking.comments" title="{{booking.comments}}"></td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                            <td width="1%">
+                                                <div class="icon-remove">
+                                                    <button type="button" class="btn btn-default btn-flat btn-sm" ng-click="deleteBooking(booking)"> <i class="fa fa-close" aria-hidden="true" style="margin-right:0;"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title subHead"> <a class="accordion-toggle collapsed" data-toggle="collapse" ng-click="closediv3(closemode3)" data-parent="#accordion" href="collapseThree"> Avbokningar </a> </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse in" ng-show="closemode3">
+                        <div class="panel-body">
+                            <div class="table-responsive table-holder">
+                                <table class="table-default" ng-repeat="booking in ServiceModel.CancelBookingList">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="custom-shadow fix-table-cols">
+                                                    <table class="table table-default">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Kund</th>
+                                                                <th>Datum</th>
+                                                                <th>Tjänst</th>
+                                                                <th>Typ av tjänst </th>
+                                                            </tr>
+                                                            <tr ng-repeat="servicetype in booking.servicewithtypes">
+                                                                <td ng-bind="booking.firstname"></td>
+                                                                <td ng-bind="booking.datetime"></td>
+                                                                <td ng-bind="servicetype.servicename"></td>
+                                                                <td ng-bind="servicetype.typename"></td>
+                                                                <td>
+                                                                    <button type="button" ng-click="SendDeleteBookingMail(booking)" class="btn btn-block btn-gray-dark">Godkänn</button>
+                                                                </td>
+                                                                <td class="small-td">&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Address</th>
+                                                                <th>Phone</th>
+                                                                <th colspan="3">Comments</th>
+
+                                                                <!--<th></th>-->
+                                                            </tr>
+                                                            <tr ng-repeat="servicetype in booking.servicewithtypes">
+                                                                <td ng-bind="booking.address" title="{{booking.address}}" ng-click="showtext()"></td>
+                                                                <td ng-bind="booking.phone" title="{{booking.phone}}"></td>
+                                                                <td colspan="3" ng-bind="booking.comments" title="{{booking.comments}}"></td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                            <td width="1%">
+                                                <div class="icon-remove">
+                                                    <button type="button" class="btn btn-default btn-flat btn-sm" ng-click="deleteBooking(booking)"> <i class="fa fa-close" aria-hidden="true" style="margin-right:0;"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

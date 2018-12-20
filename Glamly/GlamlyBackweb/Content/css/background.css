@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+.header-bg {background:url("../../images/headerbg.png") no-repeat scroll center;-webkit-background-size:cover;padding-bottom: 24px;}
+
+
+
+@media (min-width:768px) {
+.header-bg{padding-bottom:28px;min-height:753px;}
+}
+
+@-webkit-viewport { width: device-width; }
+@-moz-viewport    { width: device-width; }
+@-ms-viewport     { width: device-width; }
+@-o-viewport      { width: device-width; }
+@viewport         { width: device-width; }

@@ -1,0 +1,132 @@
+﻿<form class="form-inline">
+    <div class="top40">
+        <!--<p class="bottom20"><a class="btn btn-default bg3" href="#StylistHome" role="button">Tillbaka</a></p>-->
+        <div class="row">
+            <div class="col-sm-9">
+                <label class="control-label pageHead">FAQ</label>
+            </div>
+            <div class="col-sm-3"><a class="btn btn-primary btn-block  bottom10 btn-lg bg1 pull-right  btn-sm-block"  ng-click="openPopup('add');" role="button" style="width:250px;">Lägg till FAQ</a> </div>
+        </div>
+
+        <!--<a class="btn btn-default bg2 pull-right" href="#" role="button">Lägg till stylist</a>-->
+    </div>
+</form>
+<hr>
+<!--<style>
+        .services-form table > tbody > tr > td:nth-child(1) input[type="text"] {
+            width: 100%;
+        }
+
+        .services-form table > tbody > tr > td:nth-child(2) input[type="text"] {
+            width: 70px;
+        }
+
+        /*.dropdownHeading a.accordion-toggle:before {
+        float: right;
+        position: relative;
+    }*/
+</style>-->
+<form class="FAQForm">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-xs-12 dddiv" ng-repeat="k in FAQList">
+
+                    <div class="dropdownHeading stylistdiv-head">
+                        <h2 title="{{k.question}}">{{k.question}}</h2>
+                        <div class="stylistdiv-icon">
+                            <a class="stylistdiv-edit" href="" ng-click="GetFAQById(k);"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="{{ShowAnchorIcon(k.id)}}  accordion-toggle" id="h2_{{k.id}}" ng-click="toggleServices(k.id);" role="button"></a>
+                        </div>
+                    </div>
+                    <!--<h2 class="dropdownHeading stylistdiv-head" >                                       
+                        <label contenteditable="false" id="isedit_{{k.id}}" ng-model="k.question">
+                            {{k.question}}
+                        </label>
+                            <span class="glyphicon glyphicon-pencil"  ng-click="GetFAQById(k)"></span>
+                        
+                        <span id="h2_{{k.id}}" class="{{ShowAnchorIcon(k.id)}} accordion-toggle" ng-click="toggleServices(k.id);"></span>
+                         </h2>-->
+                    <div id="collapse_{{k.id}}" class="panel-collapse" style="{{ShowDetailsOrNot(k.id)}}">
+                        <div class="whitebgDiv borderdiv paddinglesstopbottom">
+                            <div class="table-panel">
+                                <table class="table">
+                                    <tbody>
+                                        <!--<tr ng-include="getTemplate(k)"></tr>-->
+                                        <tr>{{k.answer}}</tr>
+                                    </tbody>                                 
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</form>
+
+<div class="modal fade" id="FAQAdd_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog stylist-popup" role="document">
+        <!-- Modal content-->
+        <div class="modal-content">   
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Lägg till FAQ</h4>
+            </div>      
+                <div class="modal-body stylist-editF">              
+                    <div class="form-group">
+                        <label class="control-label">Question*</label>
+                        <div > 
+                            <input id="question" name="question" ng-model="FAQData.question" type="text" class="form-control" required placeholder="Question"
+                                   uib-tooltip="Mandatory!">
+                        </div>
+                    </div>
+                    <div class="form-group editF-part2">
+                        <label for="Foretag">Answer*</label>
+                        <div >
+                            <textarea  id="answer" style="height: 150px;"  name="answer" ng-model="FAQData.answer" type="text"class="form-control" required placeholder="Answer"
+                                   uib-tooltip="Mandatory!" ></textarea>
+                        </div>                       
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-stylistedit1" data-dismiss="modal">Ta bort</button>
+                    <button type="button" ng-click="AddNewFAQ();"  class="btn btn-primary" ng-disabled="FAQData.question==null || FAQData.answer==null" >Skapa</button>
+                </div>           
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="FAQEdit_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog stylist-popup" role="document">
+        <!-- Modal content-->
+        <div class="modal-content">   
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Lägg till FAQ</h4>
+            </div>      
+                <div class="modal-body stylist-editF">
+                    <div class="form-group">
+                        <label class="control-label">Question*</label>
+                        <div>
+                            <input id="question" name="question" ng-model="FAQData.question" type="text" class="form-control" required placeholder="Question"
+                                   uib-tooltip="Mandatory!" tooltip-enable="FAQData.question.$invalid && FAQData.question.$touched">
+                        </div>
+                    </div>
+                    <div class="form-group editF-part2">
+                        <label for="Foretag">Answer*</label>
+                        <div>
+                            <textarea id="answer" style="height: 150px;" name="answer" ng-model="FAQData.answer" type="text" class="form-control" required placeholder="Answer"
+                                   uib-tooltip="Mandatory!" tooltip-enable="FAQData.answer.$invalid && FAQData.answer.$touched"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-stylistedit1" ng-click="removeFAQ(FAQData);">Ta bort</button>
+                    <button type="submit" ng-click="UpdateFAQData();" class="btn btn-primary" ng-disabled="FAQData==null" >Skapa</button>
+                </div>           
+        </div>
+    </div>
+</div>

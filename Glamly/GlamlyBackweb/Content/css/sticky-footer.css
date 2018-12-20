@@ -1,0 +1,33 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+ 
+}
+.footer {
+  position:relative;
+  bottom: 0;
+  right:0;
+  left:0;
+  width: 100%;
+  margin-top:40px;	
+	
+}
+.green-row{ background-color: #00636E;
+ padding-top:35px; padding-bottom:35px;}
+.darkgreen-row{background-color:#3BA98A; padding-top:20px; padding-bottom:10px;}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+

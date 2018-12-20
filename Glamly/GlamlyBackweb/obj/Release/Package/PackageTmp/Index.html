@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="AngularApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glamly Backweb</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/login.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="http://stage.entella.com/glamly/wp-content/uploads/2017/06/G-for-glamly.png" />
+    <link href="Content/fullcalendar.min.css" rel="stylesheet" />
+    <link href="Content/fullcalendar-custom.css" rel="stylesheet" />
+
+
+
+
+</head>
+<body>
+    <!--<div ng-class="{wrap_all:authentication.IsAuthenticated,login-area:!authentication.IsAuthenticated}" ng-controller="indexController">-->
+    <header ng-controller="indexController">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> 
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span> </button>
+                    <a href=""><img src="Content/Img/logo.png" alt="App Logo" class="brand-logo" height="50"> </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <script type="text/ng-template" id="treeMenu">
+                        <a ng-if="(menu.Url).length > 0" href="#{{menu.Url}}">{{menu.Name|translate}}</a>
+                        <a ng-if="(menu.Url).length == 0" href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                            {{authentication.userName}} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown" ng-if="(userMenu | filter:{ParentId : menu.Id}:true).length > 0">
+                            <li ng-repeat="menu in userMenu | filter:{ParentId : menu.Id}:true" ng-include="'treeMenu'"></li>
+                        </ul>
+                    </script>
+
+                    <ul class="nav navbar-nav navbar-right" ng-show="authentication.IsAuthenticated">
+                        <li ng-repeat="menu in userMenu | filter:{ParentId : 0}:true" ng-include="'treeMenu'"
+                            class="dropdown" ng-class="{'active': menu.Id == authentication.activeItem}" ng-click="authentication.activeItem=menu.Id"></li>
+                    </ul>
+                </div>
+                <!--<div id="navbar" class="navbar-collapse collapse" >
+                    <ul class="nav navbar-nav navbar-right" ng-show="authentication.IsAuthenticated" >
+
+                        <li ng-class="{ active: isActive('#StylistHome')}"><a href="#StylistHome">Stylister</a></li>
+                        <li ng-class="{ active: isActive('#AddStylist')}"><a href="#AddStylist">Lägg till</a></li>
+                        <li ng-class="{ active: isActive('#bookings')}"><a href="#bookings">Bokningar</a></li>
+                        <li ng-class="{ active: isActive('#services')}"><a href="#services">Tjänster</a></li>
+                        <li ng-class="{ active: isActive('#')}"><a href="#">Logga ut</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </nav>
+    </header>
+    <div class="main-content container" data-ng-view="">
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-copyright">© Glamly 2017 — All Rights Reserved.</p>
+        </div>
+    </footer>
+    <!-- Angular JS libraries -->
+    <script src="Scripts/Libraries/angular.min.js"></script>
+    <script src="Scripts/Libraries/angular-route.js"></script>
+    <script src="Scripts/Libraries/angular-local-storage.min.js"></script>
+    <script src="scripts/Libraries/dirPagination.js"></script>
+
+
+
+    <!-- Angular JS translator -->
+    <script src="scripts/Libraries/angular-translate.js"></script>
+    <script src="scripts/Libraries/angular-translate-loader-partial.min.js"></script>
+    <script src="Scripts/Libraries/ui-bootstrap-tpls.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-translate-loader-static-files/2.15.1/angular-translate-loader-static-files.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--<script src="Scripts/jquery-3.1.1.js"></script>-->
+
+    <script src="Scripts/fullcalendar/moment.min.js"></script>
+    <script src="Scripts/fullcalendar/calendar.js"></script>
+    <script src="Scripts/fullcalendar/fullcalendar.js"></script>
+    <script src="Scripts/fullcalendar/gcal.min.js"></script>
+    <script src="Scripts/angular-moment.min.js"></script>
+    <script src="Scripts/angular-moment-picker.min.js"></script>
+    <!-- jQuery/Bootstrap libraries -->
+    <script src="Scripts/Libraries/bootstrap.min.js"></script>
+    <script src="Scripts/Libraries/jquery.blockUI.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+
+    <!--for moment date picker-->
+    <script src="Scripts/Libraries/moment-with-locales.js"></script>
+    <script src="Scripts/Libraries/angular-moment-picker.js"></script>
+    <script src="Scripts/Libraries/rzslider.js"></script>
+    <script src="Scripts/Libraries/ng-file-upload-shim.js"></script>
+    <script src="Scripts/Libraries/ng-file-upload.js"></script>
+
+    <!--for show password plugin-->
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
+    <script src="Scripts/Libraries/bootstrap-show-password.js"></script>-->
+    <!-- LOADER -->
+    <div id="processing" style="display:none;">
+
+        <div class="loaderbg"><div class="loader" id="loader"></div></div>
+    </div>
+    <!--/ LOADER -->
+
+    <script type="text/javascript">
+        function blockUI() {
+            $.blockUI({ message: '<img src="Content/Img/loader.gif" />' });
+        }
+    </script>
+
+
+
+    <!-- Load app main script -->
+    <script src="Scripts/Shared/app.js"></script>
+
+    <!--for SERVICE-->
+    <script src="Scripts/Shared/Services/LoginService.js"></script>
+    <script src="Scripts/Shared/Services/AuthenticationService.js"></script>
+    <script src="Scripts/Shared/Services/AuthData.js"></script>
+    <script src="Scripts/Shared/Services/ModelDialogService.js"></script>
+    <script src="Scripts/Shared/Services/uploader.js"></script>
+
+
+    <!-- Load Angular custom controllers -->
+    <script src="Scripts/Controllers/Shared/indexController.js"></script>
+
+
+    <script src="Scripts/Controllers/Home/loginController.js"></script>
+    <script src="Scripts/Controllers/Stylist/CustomerController.js"></script>
+    <script src="Scripts/Controllers/Stylist/CustomerProfileController.js"></script>
+    <script src="Scripts/Controllers/Stylist/DashboardController.js"></script>
+    <script src="Scripts/Controllers/Stylist/AddStylistController.js"></script>
+    <script src="Scripts/Controllers/Stylist/BookingController.js"></script>
+    <script src="Scripts/Controllers/Stylist/ServicesController.js"></script>
+    <script src="Scripts/Controllers/Stylist/ProfileController.js"></script>
+    <script src="Scripts/Controllers/Stylist/FAQ.js"></script>
+    <script src="Scripts/Controllers/Stylist/SchemaContoller.js"></script>
+    <script src="Scripts/Controllers/Stylist/AddStylistPageController.js"></script>
+    <script src="Scripts/Controllers/Home/logoutController.js"></script>
+    <script src="Scripts/Controllers/Home/ResetPasswordController.js"></script>
+
+    <script src="Scripts/Controllers/Home/ForgetPasswordController.js"></script>
+
+    <!--Payment controller-->
+    <!--<script src="Scripts/Controllers/Payment/PaymentMethodsController.js"></script>-->
+    <script src="Scripts/Controllers/Payment/CheckoutController.js"></script>
+    <script src="Scripts/Controllers/Payment/SuccessController.js"></script>
+    <script src="Scripts/Controllers/Payment/CancelController.js"></script>
+    <script src="Scripts/Controllers/Payment/ThankyouController.js"></script>
+</body>
+</html>
+

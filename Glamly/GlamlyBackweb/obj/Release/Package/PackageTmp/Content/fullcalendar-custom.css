@@ -1,0 +1,67 @@
+/*------------------------- 
+[-] Schema page
+--------------------------*/
+.calendar-panel {padding-top:10px; padding-bottom:20px;}
+.table-calendar { }
+.table-calendar .btn-group .btn  { background-color:transparent; box-shadow:none;}
+.table-calendar .btn-group .btn.active {pointer-events:none; font-weight:bold;font-size:15px; }
+.table-calendar .btn-group .btn:hover { color:#CE0058;}
+
+.fc-view-container table>thead>tr>th,
+.fc-view-container table>tbody>tr>td {font-weight: 500; border:0; /*vertical-align:middle;*/text-align:center; position:relative;}
+.fc-view-container table>thead>tr>th{font-size:15px; color:#585858; }
+.fc-view-container table>tbody>tr>td {font-size:14px; height:40px;}
+.fc-view-container table>thead>tr:nth-child(2n)>th { padding-bottom:15px;}
+
+
+.muted {color: #E1E4E7;}
+
+
+/*.fc-content {background: #CE0058; color: #fff; border-radius:100%; display:inline-block;width: 30px;height: 30px; padding:6px;line-height: 19px; font-weight:normal;position: absolute;left: 50%; top: 0;margin-left: -15px;}
+.muted .fc-content { opacity:0.1;}*/
+
+/*
+
+.fc-content1 {background: #CE0058;  border-radius:100%;  padding:6px; font-weight:normal;position: relative; top: 0;margin-left: -15px;}
+.muted .fc-content1 { opacity:0.1;}
+*/
+.fc-header-toolbar .fc-state-default { background:#fff; background-image:none; box-shadow:none; border:0;}
+.fc-content-skeleton tbody {display:none;}
+.fc-view-container .fc-scroller { overflow:hidden !important; height:auto !important; min-height:250px !important;}
+.fc-content-skeleton td {   font-size: 14px;
+    height: 40px;
+    font-weight: 500;
+    border: 0;
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+
+}
+.fc-content1 .fc-day-number {background: #CE0058; color: #fff; border-radius:100%; display:inline-block;width: 20px;height: 20px; padding:6px; font-weight:normal;}
+.muted .dayWithEvent>.fc-day-number{ opacity:0.1;}
+
+
+.fc-event, .fc-event-dot{background-color:transparent; }
+
+.fc-event, .fc-event-dot{background-color:transparent; }
+.fc-basic-view .fc-body .fc-row {min-height:0;}
+.fc-ltr .fc-basic-view .fc-day-top .fc-day-number {float: none;}
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+	/* Table calendar fixes */
+	
+	.fc-view-container table>thead>tr>th,
+	.fc-view-container table>tbody>tr>td { padding:3px; font-size:12px;}
+	.date-primary { position:static; margin:auto; padding:1px; width:22px; height:22px;}
+	.removepadding { padding:0;}
+}	
+
+@media (max-width:480px) {
+	/* Table calendar fixes */
+	.date-active ,
+	.fc-view-container table>thead>tr>th,
+	.fc-view-container table>tbody>tr>td { padding:3px; font-size:12px;}
+	.date-primary { position:static; margin:auto; padding:1px; width:22px; height:22px;}
+	.removepadding { padding:0;}
+}	
